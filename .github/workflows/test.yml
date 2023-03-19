@@ -1,0 +1,30 @@
+name: All Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    strategy:
+      matrix:
+        nodejs-version: [16.19.1]
+    container:
+      image: ghcr.io/devtemplates/devimage
+    steps:
+      - name: "Checkout source"
+        uses: actions/checkout@v3
+      - name: "Configure devimage"
+        uses: ./.github/actions/devimage
+        with:
+          nodejs-version: ${{ matrix.nodejs-version }}
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run coverage
+      - run: npm run build

@@ -1,0 +1,18 @@
+{
+  "name": "lib-typescript",
+  "image": "ghcr.io/devtemplates/devimage:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "EditorConfig.EditorConfig",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "ms-vscode.live-server",
+        "GitHub.copilot",
+        "ZixuanChen.vitest-explorer"
+      ]
+    }
+  }
+}
